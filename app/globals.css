@@ -1,21 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Concert+One&family=Noto+Sans+JP:wght@100..900&family=Sigmar&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(47, 47, 47);
+  background-color: rgb(254, 254, 242);
+  font-family: "Concert One", "Noto Sans JP", serif;
+}
+
+#container {
+  height: calc(100vh - 80px);
 }
