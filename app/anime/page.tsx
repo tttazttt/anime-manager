@@ -1,10 +1,10 @@
+import SearchForm from "@/components/anime/SearchForm";
 import React from "react";
-import AnimePage from "./animepage/page";
 
 const AnimeManager = () => {
   return (
     <div>
-      <AnimePage />
+      <SearchForm />
     </div>
   );
 };

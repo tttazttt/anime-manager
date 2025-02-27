@@ -113,3 +113,12 @@ type SpokenLanguage = {
   iso_639_1: string;
   name: string;
 };
+
+export type Favorite = {
+  id: number;
+  tmdbId: number;
+  title: string;
+  posterPath: string;
+  createdAt: Date;
+  ranking: number;
+};

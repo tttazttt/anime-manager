@@ -12,3 +12,12 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Anime {
+  id Int @id @default(autoincrement())
+  tmdbId Int @unique
+  title String
+  posterPath String?
+  createdAt DateTime @default(now())
+  ranking Int?
+}

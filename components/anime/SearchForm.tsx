@@ -1,43 +1,33 @@
+"use client";
 import React, { useRef, useState } from "react";
 import { MaterialSymbolsSearchCheck2Outline } from "../elements/SearchButton";
-import { AnimeResult } from "@/types";
+import { useRouter } from "next/navigation";
 
-const SearchForm = ({
-  onSearch,
-}: {
-  onSearch: (animeResults: AnimeResult[]) => void;
-}) => {
+const SearchForm = () => {
   const titleRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  // const [animeResults, setAnimeResults] = useState<AnimeResult[]>([]);
+  const router = useRouter();
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const query = titleRef.current?.value;
-    if (!query) return;
-    setLoading(true);
     setError(false);
-
-    try {
-      const res = await fetch(
-        `http://localhost:3000/api/anime/search?query=${query}`
-      );
-      const data = await res.json();
-      onSearch(data.results);
-    } catch (error) {
-      console.error("Error fetching anime", error);
+    const query = titleRef.current?.value;
+    if (!query) {
       setError(true);
-    } finally {
-      setLoading(false);
+      return;
+    } else {
+      router.push(`/anime/search?query=${encodeURIComponent(query)}`);
     }
   };
 
   return (
-    <div className="container mx-auto mt-10">
+    <div
+      className="container mx-auto flex justify-center items-center"
+      id="container"
+    >
       <form
         onSubmit={(e) => handleSearch(e)}
-        className="flex gap-5 justify-center items-center"
+        className="flex gap-5 justify-center items-center w-full pb-20"
       >
         <input
           ref={titleRef}
@@ -53,9 +43,7 @@ const SearchForm = ({
           <MaterialSymbolsSearchCheck2Outline />
         </button>
       </form>
-      {loading && <p>Loading...</p>}
       {error && <p className="text-red-200">検索に失敗しました。</p>}
-      {/* <AnimeList animeResults={animeResults} /> */}
     </div>
   );
 };
