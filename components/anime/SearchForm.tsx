@@ -38,7 +38,7 @@ const SearchForm = () => {
 
         <button
           type="submit"
-          className="bg-sky-200 w-[45px] h-[45px] flex justify-center items-center rounded-lg"
+          className="bg-[#ffe788] w-[45px] h-[45px] flex justify-center items-center rounded-lg"
         >
           <MaterialSymbolsSearchCheck2Outline />
         </button>

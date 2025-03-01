@@ -1,5 +1,12 @@
-import { redirect } from "next/navigation";
+import SearchForm from "@/components/anime/SearchForm";
+import React from "react";
 
-export default function Home() {
-  redirect("/anime");
-}
+const AnimeManager = () => {
+  return (
+    <div>
+      <SearchForm />
+    </div>
+  );
+};
+
+export default AnimeManager;

@@ -1,12 +1,12 @@
-import SearchForm from "@/components/anime/SearchForm";
-import React from "react";
+// import SearchForm from "@/components/anime/SearchForm";
+// import React from "react";
 
-const AnimeManager = () => {
-  return (
-    <div>
-      <SearchForm />
-    </div>
-  );
-};
+// const AnimeManager = () => {
+//   return (
+//     <div>
+//       <SearchForm />
+//     </div>
+//   );
+// };
 
-export default AnimeManager;
+// export default AnimeManager;
