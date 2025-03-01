@@ -16,9 +16,10 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import Image from "next/image";
+import { Favorite } from "@/types";
 
 // 🏆 並べ替え可能なアイテム (アニメ1つ分)
-const SortableAnime = ({ anime }: { anime: any }) => {
+const SortableAnime = ({ anime }: { anime: Favorite }) => {
   const {
     attributes,
     listeners,
@@ -61,7 +62,7 @@ const SortableAnime = ({ anime }: { anime: any }) => {
 
 // 🎯 ランキングページ
 const RankingPage = () => {
-  const [ranking, setRanking] = useState<any[]>([]);
+  const [ranking, setRanking] = useState<Favorite[]>([]);
 
   // 📨 API からランキング取得
   useEffect(() => {
