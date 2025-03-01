@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  touch-action: none; /* タッチ操作を妨げないようにする */
+}
+
 body {
   color: rgb(47, 47, 47);
   background-color: rgb(254, 254, 242);
