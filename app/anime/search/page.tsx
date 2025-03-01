@@ -10,6 +10,7 @@ const AnimeListPage = () => {
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const query = searchParams?.get("query") ?? "";
+  const [noResults, setNoResults] = useState<boolean>(false);
   console.log(query);
 
   useEffect(() => {
@@ -24,6 +25,9 @@ const AnimeListPage = () => {
           const data = await res.json();
           setAnimeResults(data.results || []);
           console.log(data.results);
+          if (data.results.length === 0) {
+            setNoResults(true);
+          }
         } catch (error) {
           console.error("Error fetching anime", error);
           setError(true);
@@ -38,8 +42,21 @@ const AnimeListPage = () => {
   return (
     <div>
       {error && <div>検索に失敗しました。</div>}
+      {noResults && (
+        <div
+          className="w-full grid content-center text-center text-3xl font-bold pb-20"
+          id="container"
+        >
+          検索結果がありません。
+        </div>
+      )}
       {loading ? (
-        <div>Loading...</div>
+        <div
+          className="w-full grid content-center text-center text-3xl font-bold pb-20"
+          id="container"
+        >
+          Loading...
+        </div>
       ) : (
         <AnimeList animeResults={animeResults} />
       )}

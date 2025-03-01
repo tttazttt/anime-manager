@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { AnimeDetails, AnimeResult } from "@/types";
+import { AnimeDetails, Favorite } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { MaterialSymbolsKidStar } from "@/components/elements/FavoriteButton";
@@ -27,7 +27,7 @@ const AnimeDetailPage = () => {
         const res = await fetch("/api/anime/favorite");
         const favorites = await res.json();
         setIsFavorite(
-          favorites.some((fav: AnimeResult) => fav.id === parseInt(animeId))
+          favorites.some((fav: Favorite) => fav.tmdbId === parseInt(animeId))
         );
       } catch (error) {
         console.error("Error checking favorite:", error);
