@@ -1,0 +1,9 @@
+{
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "post-build": "npx prisma migrate deploy"
+}
