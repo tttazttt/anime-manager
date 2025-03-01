@@ -1,18 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
-  const animeId = params.id;
-  if (!animeId) {
+export async function GET(request: NextRequest) {
+  const id = request.nextUrl.pathname.split("/").pop();
+
+  if (!id) {
     return NextResponse.json(
       { error: "Anime ID is required" },
       { status: 400 }
     );
   }
   const apiKey = process.env.TMDB_API_KEY;
-  const tmdbUrl = `https://api.themoviedb.org/3/tv/${animeId}?api_key=${apiKey}&language=ja-JP`;
+  const tmdbUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&language=ja-JP`;
   try {
     const res = await fetch(tmdbUrl);
     const data = await res.json();

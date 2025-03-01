@@ -27,7 +27,7 @@ const SearchForm = () => {
     >
       <form
         onSubmit={(e) => handleSearch(e)}
-        className="flex gap-5 justify-center items-center w-full pb-20"
+        className="flex gap-0.5 justify-center items-center w-full pb-20"
       >
         <input
           ref={titleRef}

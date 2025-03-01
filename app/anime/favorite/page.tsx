@@ -9,7 +9,7 @@ const FavoritesPage = () => {
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/anime/favorite");
+        const res = await fetch("/api/anime/favorite");
         const data = await res.json();
         setFavorites(data);
       } catch (error) {
